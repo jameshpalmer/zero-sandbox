@@ -12,7 +12,7 @@ function App() {
   const z = useZero<Schema>();
 
   const sample = useQuery(z.query.sample);
-  console.log(sample[0].length, `at ${new Date().toISOString()}`);
+  console.log(`${sample[0].length} rows loaded at ${new Date().toISOString()}`);
 
   const [users] = useQuery(z.query.user);
   const [mediums] = useQuery(z.query.medium);
