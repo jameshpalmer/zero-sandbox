@@ -44,15 +44,6 @@ const medium = table("medium")
   })
   .primaryKey("id");
 
-const sample = table("sample")
-  .columns({
-    id: string(),
-    col1: string(),
-    col2: string(),
-    col3: string(),
-  })
-  .primaryKey("id");
-
 const messageRelationships = relationships(message, ({ one }) => ({
   sender: one({
     sourceField: ["senderID"],
@@ -67,7 +58,7 @@ const messageRelationships = relationships(message, ({ one }) => ({
 }));
 
 export const schema = createSchema(1, {
-  tables: [user, medium, message, sample],
+  tables: [user, medium, message],
   relationships: [messageRelationships],
 });
 
