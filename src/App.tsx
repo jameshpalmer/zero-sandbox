@@ -10,6 +10,15 @@ import { formatDate } from "./date";
 
 function App() {
   const z = useZero<Schema>();
+
+  z.mutate.message.upsert({
+    id: "1",
+    body: "Message",
+    mediumID: "1",
+    senderID: "1",
+    timestamp: 0,
+  });
+
   const [users] = useQuery(z.query.user);
   const [mediums] = useQuery(z.query.medium);
 
@@ -17,7 +26,8 @@ function App() {
   const [filterText, setFilterText] = useState<string>("");
 
   const all = z.query.message;
-  const [allMessages] = useQuery(all);
+  const [allMessages, allMessagesResult] = useQuery(all);
+  console.log(allMessages, allMessagesResult);
 
   let filtered = all
     .related("medium")

@@ -15,11 +15,11 @@ const userID = decodedJWT?.sub ? (decodedJWT.sub as string) : "anon";
 const z = new Zero({
   userID,
   auth: () => encodedJWT,
-  server: import.meta.env.VITE_PUBLIC_SERVER,
+  server: null,
   schema,
   // This is often easier to develop with if you're frequently changing
   // the schema. Switch to 'idb' for local-persistence.
-  kvStore: "mem",
+  kvStore: "idb",
 });
 
 createRoot(document.getElementById("root")!).render(
