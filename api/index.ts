@@ -45,6 +45,12 @@ app.get("/login", async (c) => {
   return c.text("ok");
 });
 
+app.get("/test", async (c) => {
+  return c.json({
+    message: "Hello from the server!",
+  });
+});
+
 export default handle(app);
 
 function must<T>(val: T) {
